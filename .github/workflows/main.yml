@@ -2,7 +2,7 @@ name: build
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "fix-initramfs-keyboard" ]
 
 jobs:
   build:
@@ -33,7 +33,7 @@ jobs:
     - uses: softprops/action-gh-release@v1
       with:
         token: "${{ secrets.GITHUB_TOKEN }}"
-        tag_name: "continuous"
+        tag_name: "fix-initramfs-keyboard-workflow"
         prerelease: true
         name: "Continuous Build"
         files: |
