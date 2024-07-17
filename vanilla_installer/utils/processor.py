@@ -656,7 +656,6 @@ class Processor:
                     "mv /var/storage /var/lib/abroot/",
                     "mount -o bind /var/home /home",
                     "mount -o bind /var/opt /opt",
-                    "mount -o bind,ro /.system/usr /usr",
                 ],
                 chroot=True,
             )
