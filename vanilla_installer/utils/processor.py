@@ -609,12 +609,20 @@ class Processor:
                 "grub-mkconfig", ["/boot/grub/grub.cfg"], chroot=True
             )
 
+            # Prepare environment for next step
+            recipe.add_postinstall_step(
+                "shell",
+                [
+                    "mkdir /mnt/a/.system/boot/init",
+                    "mount /dev/vos-root/init /mnt/a/.system/boot/init",
+                ],
+                chroot=False
+            )
+
             # Copy init files to init LV
             recipe.add_postinstall_step(
                 "shell",
                 [
-                    "mkdir /.system/boot/init",
-                    "mount /dev/vos-root/init /.system/boot/init",
                     "mkdir /.system/boot/init/vos-a",
                     "mkdir /.system/boot/init/vos-b",
                     "mv /.system/boot/vmlinuz* /.system/boot/init/vos-a",
